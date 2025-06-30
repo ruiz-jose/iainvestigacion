@@ -1,0 +1,33 @@
+{
+  "name": "ia-investigacion-social",
+  "version": "1.0.0",
+  "description": "Sitio web interactivo sobre el impacto de la IA en la investigación social",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000 -o",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "artificial-intelligence",
+    "social-research",
+    "infographic",
+    "academic",
+    "data-visualization"
+  ],
+  "author": "Equipo de Ciudades Sustentables",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ciudades-sustentables/ia-investigacion-social.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ciudades-sustentables/ia-investigacion-social/issues"
+  },
+  "homepage": "https://ciudades-sustentables.github.io/ia-investigacion-social/",
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "http-server": "^14.1.1"
+  }
+}
