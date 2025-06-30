@@ -1,3 +1,51 @@
+/* Timeline styles */
+.timeline {
+    border-left: 4px solid #1976D2;
+    padding-left: 2rem;
+}
+.timeline-event {
+    margin-bottom: 2rem;
+}
+.timeline-event:last-child {
+    margin-bottom: 0;
+}
+.timeline-date {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+.timeline-title {
+    font-weight: bold;
+    color: #1976D2;
+}
+.timeline-desc {
+    color: #64748b;
+}
+
+/* Table improvements */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+th, td {
+    border-bottom: 1px solid #e5e7eb;
+}
+th {
+    font-weight: 700;
+    background: #e3f2fd;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Cards for cases */
+.case-card {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.case-card:hover {
+    box-shadow: 0 8px 24px rgba(33, 150, 243, 0.12);
+    transform: translateY(-4px) scale(1.02);
+}
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f3f4f6;
