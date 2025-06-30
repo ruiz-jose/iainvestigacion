@@ -5,9 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "python -m http.server 8000",
-    "serve": "npx http-server -p 8000 -o",
-    "build": "echo 'No build process needed for static site'",
-    "deploy": "gh-pages -d ."
+    "serve": "npx http-server -p 8000 -o"
   },
   "keywords": [
     "artificial-intelligence",
@@ -20,14 +18,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ciudades-sustentables/ia-investigacion-social.git"
+    "url": "https://github.com/ruiz-jose/iainvestigacion.git"
   },
   "bugs": {
-    "url": "https://github.com/ciudades-sustentables/ia-investigacion-social/issues"
+    "url": "https://github.com/ruiz-jose/iainvestigacion/issues"
   },
-  "homepage": "https://ciudades-sustentables.github.io/ia-investigacion-social/",
-  "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "http-server": "^14.1.1"
-  }
+  "homepage": "https://ruiz-jose.github.io/iainvestigacion/"
 }
