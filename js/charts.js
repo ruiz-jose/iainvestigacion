@@ -142,21 +142,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Smooth scrolling for navigation links
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
+            });
+        });
+    }
+
+    // Enhanced smooth scrolling with offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
 
-    // Add fade-in animation to sections on scroll
+    // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -166,11 +187,80 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-up');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
     }, observerOptions);
 
+    // Apply observer to all sections
     document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
         observer.observe(section);
+    });
+
+    // Hero section should be visible immediately
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+        heroSection.style.opacity = '1';
+        heroSection.style.transform = 'translateY(0)';
+    }
+
+    // Professional loading state for charts
+    const chartContainers = document.querySelectorAll('.chart-container');
+    chartContainers.forEach(container => {
+        container.classList.add('chart-loading');
+        setTimeout(() => {
+            container.classList.remove('chart-loading');
+        }, 1000);
+    });
+
+    // Add professional hover effects to cards
+    document.querySelectorAll('.bg-white').forEach(card => {
+        if (card.closest('section')) {
+            card.classList.add('card-hover');
+        }
+    });
+
+    // Stats counter animation (simple version)
+    const statsElements = document.querySelectorAll('.stat-item');
+    statsElements.forEach((stat, index) => {
+        stat.style.animationDelay = `${index * 0.2}s`;
+    });
+
+    // Professional table enhancements
+    const tables = document.querySelectorAll('table');
+    tables.forEach(table => {
+        table.classList.add('professional-table');
+        
+        // Add hover effects to rows
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'scale(1.01)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'scale(1)';
+            });
+        });
+    });
+
+    // Download button functionality (placeholder)
+    document.querySelectorAll('button').forEach(button => {
+        if (button.textContent.includes('Descargar')) {
+            button.addEventListener('click', () => {
+                // Placeholder for download functionality
+                alert('Funcionalidad de descarga en desarrollo. Contacta al equipo por email para obtener los recursos.');
+            });
+        }
+    });
+
+    // Add section title styling
+    document.querySelectorAll('h3').forEach(title => {
+        if (title.closest('section') && title.classList.contains('text-center')) {
+            title.classList.add('section-title');
+        }
     });
 });
